@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
    "start": "npm-run-all --parallel jsonserver dev",
-    "jsonserver": "json-server --watch db.json --port 3004",
-    "dev": "vite",
+   "jsonserver": "cd assets && json-server --watch db.json --port 3004",
+   "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
