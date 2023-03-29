@@ -1,10 +1,6 @@
 <script>
   import "./app.css";
-  import Calisanlar from "./lib/calisanlar.svelte";
+  import EmployeeList from "./lib/EmployeeList.svelte";
 </script>
 
-<Calisanlar />
-
-<h1 class="text-3xl font-bold underline">
-  Hello world!
-</h1>
+<EmployeeList />
