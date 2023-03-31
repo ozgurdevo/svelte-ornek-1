@@ -18,6 +18,10 @@
     nameInput = nameValue;
     emailInput = emailValue;
   };
+
+  let deleteEmployeeHandler = (i) => {
+    employeeList = employeeList.filter((el, index) => index !== i);
+  };
 </script>
 
 <div
@@ -57,6 +61,7 @@
       {...employee}
       updateEmployeeInputsHandler={() =>
         updateEmployeeInputsHandler(employee.fullname, employee.email)}
+      deleteEmployeeHandler={() => deleteEmployeeHandler(i)}
     />
   {/each}
 </div>

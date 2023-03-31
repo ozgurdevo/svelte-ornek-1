@@ -3,7 +3,8 @@
     email,
     maritalStatus,
     department,
-    updateEmployeeInputsHandler;
+    updateEmployeeInputsHandler,
+    deleteEmployeeHandler;
 </script>
 
 <div
@@ -30,7 +31,7 @@
   <div class="col-span-1 inline-flex justify-center items-center">
     <button
       class="bg-slate-200 hover:bg-slate-300 focus:bg-slate-400 focus:text-white p-1 rounded-md"
-      on:click={null}>sil</button
+      on:click={deleteEmployeeHandler}>sil</button
     >
   </div>
 </div>
