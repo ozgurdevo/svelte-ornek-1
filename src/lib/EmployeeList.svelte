@@ -16,33 +16,33 @@
     );
   });
 
+  // ilgili çalışanın 'güncelle' butonu
   let updateEmployeeInputsHandler = (nameValue, emailValue, i) => {
-    nameInput = nameValue;
-    emailInput = emailValue;
-    selected = i;
+    // YAPILACAKLAR
+    // 1) ad ve email input'larina ilgili çalışanın ad ve email bilgisi atanacak
+    // 2) selected değişkenine seçilen çalışanın dizi id'si atanacak
   };
 
+  // ilgili çalışanın 'sil' butonu
   let deleteEmployeeHandler = (i) => {
-    employeeList = employeeList.filter((el, index) => index !== i);
+    // YAPILACAKLAR
+    // 1) employeeList dizisinden ilgili çalışan çıkarılacak [i parametresi kullanılarak]
   };
 
+  // iptal butonu
   let cancelHandler = () => {
-    nameInput = "";
-    emailInput = "";
-
-    selected = null;
+    // YAPILACAKLAR
+    // 1) ad ve email input'ları sıfırlanacak
+    // 2) selected'a null atanacak
   };
 
+  // ekle / onayla butonu
   let addHandler = () => {
-    let tempList = [...employeeList];
-    tempList[selected].fullname = nameInput;
-    tempList[selected].email = emailInput;
-    employeeList = tempList;
-
-    nameInput = "";
-    emailInput = "";
-
-    selected = null;
+    // YAPILACAKLAR
+    // 1) spread operatörü ile employeeList dizisi kopyalanıp, yeni dizide 'selected' indisindeki çalışanın
+    // fullname ve email bilgileri güncellenecek ve employeeListe güncel dizi atanacak
+    // 2) ad ve email input'ları sıfırlanacak
+    // 3) selected'a null atanacak
   };
 </script>
 
@@ -87,11 +87,13 @@
   </form>
   <Columns />
   {#each employeeList as employee, i}
-    <Employee
-      {...employee}
+    <!-- <Employee
+      YAPILACAKLAR
+      1) Bu yorum satırlı komponent kullanımı açılıp employee componentine ilgili employee'nin
+      fullname, email gibi bilgilerini props özelliği ile gönderilecek
       updateEmployeeInputsHandler={() =>
         updateEmployeeInputsHandler(employee.fullname, employee.email, i)}
       deleteEmployeeHandler={() => deleteEmployeeHandler(i)}
-    />
+    /> -->
   {/each}
 </div>
