@@ -4,7 +4,9 @@
   import { onMount } from "svelte";
   import Employee from "./Employee.svelte";
   let employeeList = [];
-  let nameInput, emailInput;
+  let nameInput,
+    emailInput,
+    selected = null;
 
   onMount(async () => {
     const res = fetch(`http://localhost:3004/employees`).then(
@@ -14,13 +16,33 @@
     );
   });
 
-  let updateEmployeeInputsHandler = (nameValue, emailValue) => {
+  let updateEmployeeInputsHandler = (nameValue, emailValue, i) => {
     nameInput = nameValue;
     emailInput = emailValue;
+    selected = i;
   };
 
   let deleteEmployeeHandler = (i) => {
     employeeList = employeeList.filter((el, index) => index !== i);
+  };
+
+  let cancelHandler = () => {
+    nameInput = "";
+    emailInput = "";
+
+    selected = null;
+  };
+
+  let addHandler = () => {
+    let tempList = [...employeeList];
+    tempList[selected].fullname = nameInput;
+    tempList[selected].email = emailInput;
+    employeeList = tempList;
+
+    nameInput = "";
+    emailInput = "";
+
+    selected = null;
   };
 </script>
 
@@ -51,8 +73,16 @@
     <div class="col-span-1" />
     <div class="col-span-2" />
     <div class="col-span-2 flex justify-center items-center gap-2">
-      <button class="border border-black rounded-md p-1 bg-white">iptal</button>
-      <button class="border border-black rounded-md p-1 bg-white">ekle</button>
+      <button
+        class="border border-black rounded-md p-1 bg-white"
+        type="button"
+        on:click={cancelHandler}>iptal</button
+      >
+      <button
+        class="border border-black rounded-md p-1 bg-white"
+        type="button"
+        on:click={addHandler}>{selected === null ? "ekle" : "onayla"}</button
+      >
     </div>
   </form>
   <Columns />
@@ -60,7 +90,7 @@
     <Employee
       {...employee}
       updateEmployeeInputsHandler={() =>
-        updateEmployeeInputsHandler(employee.fullname, employee.email)}
+        updateEmployeeInputsHandler(employee.fullname, employee.email, i)}
       deleteEmployeeHandler={() => deleteEmployeeHandler(i)}
     />
   {/each}
